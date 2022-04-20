@@ -1,0 +1,31 @@
+HTTP - HyperText Transfer Protocol
+
+The most interested HTTP requests is XHR in browser console.
+
+Format:
+JSON -> { key : value }
+XML -> <tag> some text </tag>
+
+URI
+path after main site name -> yandex.ru/path
+
+Method
+GET -> quick, unsecure, without body
+POST -> slow, secure, with body
+
+Status code
+100 - Information
+200 - Success
+300 - Forwarding
+400 - Clients errors
+500 - Servers errors
+
+Remote address
+IP with port
+
+Headers
+path - the request way
+contentType - application/json-xml
+user-agent - current browser
+
+SWAGGER - library for requests, for API documentation

@@ -1,0 +1,10 @@
+Api is Application Programming Interface. It is Interface.
+
+We know GUI - Graphic User Interface and CLI - Concole Line Interface.
+
+Some API introduces:
+1) The method of communication between two or many programs
+2) Example: Client - Server
+3) Client makes HTTP-requests
+4) Server handles requests and sends the response
+5) Client reacts to responses
