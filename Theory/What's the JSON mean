@@ -1,0 +1,13 @@
+JSON
+JavaScript Object Notation
+
+Text format to exchange information from server to client
+
+"key":"value"
+
+text - "name": "user"
+number - "age": 30
+array - "interests": ["programming", "testing", "cats"]
+boolean - "married": true
+null - "licence": null
+object - "person": {"name":"eminem", "age": 50}
