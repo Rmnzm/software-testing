@@ -1,0 +1,12 @@
+Requests
+
+GET - without body, only params
+
+POST - with body, with params
+body in data=...
+
+PUT - with body, with params
+body in data=...
+
+DELETE - with body, with params
+body in data=...
