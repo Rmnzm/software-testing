@@ -12,3 +12,9 @@ payload = {"name": "User"}
 #
 # print(response.status_code)
 
+# HEADERS
+# headers = {"some_header": "123"} setUp USER headers
+# response = requests.get("https://playground.learnqa.ru/api/show_all_headers", headers= headers)  improve headers
+#
+# print(response.text) in this you may see your headers
+# print(response.headers)
