@@ -5,3 +5,7 @@ Installation:
 2. Install virtual environment
 3. Check pip version
 4. Install requirements
+
+
+#created test framework
+#packages: lib, tests
