@@ -1,10 +1,12 @@
 import pytest
+import allure
 
 from lib.base_case import BaseCase
 from lib.assertions import Assertions
 from lib.my_requests import MyRequests
 
 
+@allure.epic("Тесты на регистрацию")
 class TestUserRegister(BaseCase):
     exclude_params = [
         ('no_password'),
@@ -14,6 +16,7 @@ class TestUserRegister(BaseCase):
         ('no_email')
     ]
 
+    @allure.testcase("Создание пользователя")
     def test_create_new_user(self):
         data = self.prepare_registration_user()
 
@@ -22,6 +25,7 @@ class TestUserRegister(BaseCase):
         Assertions.assert_code_status(response, 200)
         Assertions.assert_json_has_key(response, "id")
 
+    @allure.testcase("Неудачное создание пользователя с уже зарегистрированным email")
     def test_create_user_with_existing_email(self):
         email = "vinkotov@example.com"
         data = self.prepare_registration_user(email)
@@ -32,6 +36,7 @@ class TestUserRegister(BaseCase):
         assert response.content.decode(
             'utf-8') == f"Users with email '{email}' already exists", f"Unexpected response content {response.content}"
 
+    @allure.testcase("Неудачная регистрация с некорректным email")
     def test_create_user_with_incorrect_email(self):
         email = "vinkotov example.com"
         data = self.prepare_registration_user(email)
@@ -42,6 +47,7 @@ class TestUserRegister(BaseCase):
         assert response.content.decode('utf-8') == "Invalid email format", "Incorrect request. Please try to change " \
                                                                            "your request "
 
+    @allure.testcase("Неудачная регистрация пользователя без: password | username | firstName | lastName | email")
     @pytest.mark.parametrize("condition", exclude_params)
     def test_create_email_without_some_params(self, condition):
 
@@ -100,6 +106,7 @@ class TestUserRegister(BaseCase):
             Assertions.assert_code_status(response, 400)
             assert response.content.decode('utf-8') == "The following required params are missed: email"
 
+    @allure.testcase("Неуспешная регистрация с коротким username")
     def test_create_user_with_shortest_username(self):
         data = {
             "password": "123",
@@ -112,6 +119,7 @@ class TestUserRegister(BaseCase):
         Assertions.assert_code_status(response, 400)
         assert response.content.decode('utf-8') == "The value of 'username' field is too short"
 
+    @allure.testcase("Неуспешная регистрация с длинным username")
     def test_create_user_with_longest_username(self):
         data = {
             "password": "123",

@@ -1,9 +1,13 @@
+import allure
+
 from lib.my_requests import MyRequests
 from lib.base_case import BaseCase
 from lib.assertions import Assertions
 
 
+@allure.epic("Получение данных о пользователе")
 class TestUserGet(BaseCase):
+    @allure.testcase("Получение данных зарезервированного неавторизованного пользователя")
     def test_user_get(self):
         response = MyRequests.get("/user/2")
 
@@ -12,6 +16,7 @@ class TestUserGet(BaseCase):
         Assertions.assert_json_has_not_key(response, "firstName")
         Assertions.assert_json_has_not_key(response, "lastName")
 
+    @allure.testcase("Получение данных авторизованного пользователя")
     def test_get_user_defaults_auth_as_same_user(self):
         data = {
             "email": "vinkotov@example.com",
@@ -33,6 +38,7 @@ class TestUserGet(BaseCase):
         expected_fields = ["username", "email", "firstName", "lastName"]
         Assertions.assert_json_has_keys(response2, expected_fields)
 
+    @allure.testcase("Получение данных пользователя с авторизацией под другим пользователем")
     def test_get_username_from_another_user(self):
         data = self.prepare_registration_user()
 

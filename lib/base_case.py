@@ -1,18 +1,23 @@
 import json
+import allure
 
 from requests import Response
 from datetime import datetime
 
 
+@allure.epic("Шаги к тестам")
 class BaseCase:
+    @allure.step("Получение кук из ответа")
     def get_cookie(self, response: Response, cookie_name):
         assert cookie_name in response.cookies, f"Cannot find cookie with name {cookie_name} in the last response"
         return response.cookies[cookie_name]
 
+    @allure.step("Получение хедеров из ответа")
     def get_header(self, response: Response, headers_name):
         assert headers_name in response.headers, f"Cannot find header with the name {headers_name} in the last response"
         return response.headers[headers_name]
 
+    @allure.step("Получение значения из ответа в формате json")
     def get_json_value(self, response: Response, name):
         try:
             response_as_dict = response.json()
@@ -23,6 +28,7 @@ class BaseCase:
 
         return response_as_dict[name]
 
+    @allure.step("Создание регистрационных данных")
     def prepare_registration_user(self, email=None):
         if email is None:
             base_part = "learnqa"
