@@ -9,6 +9,7 @@ Installation:
 
 #created test framework
 #packages: lib, tests
+#to correct run - create **logs** folder
 
 # run in docker
 run command in console - $docker-compose up --build
