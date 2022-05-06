@@ -9,6 +9,7 @@ Installation:
 
 #created test framework
 #packages: lib, tests
+
 #to correct run - create **logs** folder
 
 # run in docker
